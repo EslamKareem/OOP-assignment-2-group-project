@@ -4,7 +4,7 @@
 
 **Academic Year:** 2026-2027
 
-**Instructor**  Dr.Mohammad El-Ramly
+**Instructor** Dr.Mohammad El-Ramly
 
 ## 👥 Team Members
 
@@ -25,3 +25,5 @@ you can use whatever we did just a mention will be enough as long as you are a n
 ⚠️ if a company please note that:
 you can ask us and mention us if you don`t want to mention us you can contact us via email to see our response
 thanks for reading this and have a great day. 🕊️
+
+the lion doesn`t concern himself with skill issue
