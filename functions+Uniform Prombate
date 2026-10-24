@@ -1,0 +1,16 @@
+Design a Vole machine (Brookshear machine) simulator in an object-oriented way.
+Include: Machine, CPU, ALU, Registers (16 x 8-bit), Memory (256 cells),
+Instruction decoding (opcodes 1-C), and a Screen/Output.
+Storing to address 00 writes the value to the screen.
+
+The design must be able to run these two programs:
+
+Program 1 (sum 1+2+3+4+5, result 0F):
+2001 2102 2203 2304 2405 5501 5552 5553 5554 3500 C000
+
+Program 2 (6 x 3 using addition, result 12):
+2006 5100 5210 3200 C000
+
+Produce a PlantUML class diagram with attributes, methods,
+visibility, and relationships (association, composition, etc.).
+Return only valid PlantUML code.

@@ -1,0 +1,272 @@
+plantuml
+```
+
+@startuml VoleMachineSimulator
+
+title Vole (Brookshear) Machine Simulator - Object-Oriented Design
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+' =========================
+' Machine and core components
+' =========================
+
+class Machine {
+    - cpu : CPU
+    - memory : Memory
+    - screen : Screen
+    - running : boolean
+    + Machine()
+    + loadProgram(program : List<String>, startAddress : byte) : void
+    + run() : void
+    + step() : void
+    + reset() : void
+    + isRunning() : boolean
+    + getCPU() : CPU
+    + getMemory() : Memory
+    + getScreen() : Screen
+}
+
+class CPU {
+    - registers : Registers
+    - alu : ALU
+    - decoder : InstructionDecoder
+    - memory : Memory
+    - screen : Screen
+    - pc : byte
+    - ir : short
+    - halted : boolean
+    + CPU(memory : Memory, screen : Screen)
+    + fetch() : short
+    + decode(instruction : short) : Instruction
+    + execute(instruction : Instruction) : void
+    + step() : void
+    + run() : void
+    + halt() : void
+    + reset() : void
+    + getPC() : byte
+    + setPC(address : byte) : void
+    + getRegisters() : Registers
+}
+
+class ALU {
+    + add(a : byte, b : byte) : byte
+    + and(a : byte, b : byte) : byte
+    + xor(a : byte, b : byte) : byte
+    + rotateRight(value : byte, count : int) : byte
+    + isEqual(a : byte, b : byte) : boolean
+}
+
+class Registers {
+    - values : byte[16]
+    + Registers()
+    + get(index : int) : byte
+    + set(index : int, value : byte) : void
+    + getAll() : byte[]
+    + clear() : void
+}
+
+class Memory {
+    - cells : byte[256]
+    + Memory()
+    + read(address : byte) : byte
+    + write(address : byte, value : byte) : void
+    + load(address : byte, value : byte) : void
+    + loadProgram(program : List<String>, startAddress : byte) : void
+    + getCell(address : byte) : byte
+    + clear() : void
+}
+
+class Screen {
+    - outputBuffer : List<String>
+    - lastValue : byte
+    + Screen()
+    + write(value : byte) : void
+    + display(value : byte) : void
+    + getLastValue() : byte
+    + getOutput() : List<String>
+    + clear() : void
+}
+
+' =========================
+' Instruction decoding
+' =========================
+
+class InstructionDecoder {
+    + decode(word : short) : Instruction
+    + extractOpcode(word : short) : int
+    + extractR(word : short) : int
+    + extractX(word : short) : int
+    + extractY(word : short) : int
+    + extractAddress(word : short) : byte
+    + extractConstant(word : short) : byte
+}
+
+class Instruction {
+    - opcode : int
+    - r : int
+    - x : int
+    - y : int
+    - address : byte
+    - constant : byte
+    + Instruction(opcode : int)
+    + getOpcode() : int
+    + getR() : int
+    + getX() : int
+    + getY() : int
+    + getAddress() : byte
+    + getConstant() : byte
+}
+
+abstract class InstructionHandler {
+    + {abstract} execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class LoadMemoryInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class LoadImmediateInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class StoreInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class MoveInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class AddInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class BitwiseAndInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class BitwiseXorInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class ConditionalJumpInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+class HaltInstruction {
+    + execute(cpu : CPU, instruction : Instruction) : void
+}
+
+' =========================
+' Composition and associations
+' =========================
+
+Machine *-- CPU : owns
+Machine *-- Memory : owns
+Machine *-- Screen : owns
+
+CPU *-- Registers : owns 16 registers
+CPU *-- ALU : uses
+CPU *-- InstructionDecoder : owns
+CPU --> Memory : fetches / reads / writes
+CPU --> Screen : output via address 00
+InstructionDecoder ..> Instruction : creates
+
+InstructionHandler <|-- LoadMemoryInstruction
+InstructionHandler <|-- LoadImmediateInstruction
+InstructionHandler <|-- StoreInstruction
+InstructionHandler <|-- MoveInstruction
+InstructionHandler <|-- AddInstruction
+InstructionHandler <|-- BitwiseAndInstruction
+InstructionHandler <|-- BitwiseXorInstruction
+InstructionHandler <|-- ConditionalJumpInstruction
+InstructionHandler <|-- HaltInstruction
+
+InstructionHandler ..> CPU : executes on
+InstructionHandler ..> Instruction : interprets
+LoadMemoryInstruction ..> Memory
+StoreInstruction ..> Memory
+StoreInstruction ..> Screen : address 00 outputs value
+AddInstruction ..> ALU
+BitwiseAndInstruction ..> ALU
+BitwiseXorInstruction ..> ALU
+ConditionalJumpInstruction ..> Registers
+
+note right of Memory
+  256 addressable cells.
+  Each cell stores 8 bits.
+  Instructions occupy two consecutive cells.
+  Addresses range from 00 to FF.
+  Word addresses wrap according
+  to the machine's 8-bit PC model.
+end note
+
+note right of Registers
+  16 general-purpose 8-bit registers:
+  R0 through RF.
+  Register indexes are hexadecimal.
+  Arithmetic results are truncated
+  to 8 bits.
+end note
+
+note right of InstructionDecoder
+  Decode 16-bit instruction words.
+  Supported opcode families:
+
+  1: Load register from memory
+  2: Load immediate constant
+  3: Store register to memory
+  4: Move register to register
+  5: Integer addition
+  6: Bitwise AND
+  7: Bitwise XOR
+  8: Bitwise OR (optional extension)
+  9: Rotate right (optional extension)
+  A: Conditional jump
+  B: Conditional jump (optional extension)
+  C: Halt
+
+  Implement only the opcode formats
+  required by the selected ISA variant.
+end note
+
+note bottom of StoreInstruction
+  If effective address == 00:
+  screen.write(registerValue)
+  Otherwise:
+  memory.write(address, registerValue)
+end note
+
+note bottom of AddInstruction
+  Opcode 5 format: 5 R X Y
+  R[R] = (R[X] + R[Y]) & FF
+
+  Supports the supplied programs:
+  5501, 5552, 5553, 5554
+  5100, 5210
+end note
+
+note bottom of LoadImmediateInstruction
+  Opcode 2 format: 2 R II
+  R[R] = II
+
+  Example:
+  2001 loads 01 into R0.
+  2102 loads 02 into R1.
+end note
+
+note bottom of StoreInstruction
+  Program 1:
+  3500 stores R5 to address 00.
+  Screen output = 0F.
+
+  Program 2:
+  3200 stores R2 to address 00.
+  Screen output = 12.
+end note
+
+@enduml
+```

@@ -1,0 +1,198 @@
+@startuml VoleMachine
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+title Vole (Brookshear) Machine Simulator - Class Diagram
+
+enum Opcode {
+  LOAD_MEM = 1
+  LOAD_IMM = 2
+  STORE = 3
+  MOVE = 4
+  ADD_INT = 5
+  ADD_FLOAT = 6
+  OR = 7
+  AND = 8
+  XOR = 9
+  ROTATE = 0xA
+  JUMP_EQ = 0xB
+  HALT = 0xC
+  --
+  + {static} fromNibble(n: int): Opcode
+}
+
+class Instruction <<value object>> {
+  - opcode: Opcode
+  - r: int
+  - s: int
+  - t: int
+  - xy: int
+  - raw: int
+  --
+  + Instruction(raw: int)
+  + getOpcode(): Opcode
+  + getR(): int
+  + getS(): int
+  + getT(): int
+  + getXY(): int
+  + getRaw(): int
+  + toString(): String
+}
+
+class InstructionDecoder {
+  + decode(highByte: int, lowByte: int): Instruction
+  - nibble(value: int, index: int): int
+}
+
+class Register {
+  - value: int
+  --
+  + read(): int
+  + write(v: int): void
+}
+
+class RegisterFile {
+  - {static} SIZE: int = 16
+  - registers: Register[16]
+  --
+  + read(index: int): int
+  + write(index: int, value: int): void
+  + reset(): void
+  + dump(): String
+}
+
+class Memory {
+  - {static} SIZE: int = 256
+  - cells: int[256]
+  - screen: Screen
+  --
+  + Memory(screen: Screen)
+  + read(address: int): int
+  + write(address: int, value: int): void
+  + load(program: int[], startAddress: int): void
+  + reset(): void
+  + dump(): String
+  - isScreenAddress(address: int): boolean
+}
+
+class Screen {
+  - output: List<Integer>
+  --
+  + write(value: int): void
+  + getOutput(): List<Integer>
+  + getLastValue(): int
+  + clear(): void
+  + toString(): String
+}
+
+class ALU {
+  + addTwosComplement(a: int, b: int): int
+  + addFloat(a: int, b: int): int
+  + bitOr(a: int, b: int): int
+  + bitAnd(a: int, b: int): int
+  + bitXor(a: int, b: int): int
+  + rotateRight(value: int, steps: int): int
+  - toFloat(bits: int): double
+  - fromFloat(value: double): int
+}
+
+class CPU {
+  - programCounter: int
+  - instructionRegister: Instruction
+  - halted: boolean
+  --
+  + CPU(registers: RegisterFile, memory: Memory, alu: ALU, decoder: InstructionDecoder)
+  + step(): void
+  + run(): void
+  + reset(): void
+  + isHalted(): boolean
+  + getProgramCounter(): int
+  - fetch(): Instruction
+  - execute(instr: Instruction): void
+  - execLoadMem(i: Instruction): void
+  - execLoadImm(i: Instruction): void
+  - execStore(i: Instruction): void
+  - execMove(i: Instruction): void
+  - execAddInt(i: Instruction): void
+  - execAddFloat(i: Instruction): void
+  - execOr(i: Instruction): void
+  - execAnd(i: Instruction): void
+  - execXor(i: Instruction): void
+  - execRotate(i: Instruction): void
+  - execJumpEq(i: Instruction): void
+  - execHalt(): void
+}
+
+class Machine {
+  - cpu: CPU
+  - alu: ALU
+  - decoder: InstructionDecoder
+  - registers: RegisterFile
+  - memory: Memory
+  - screen: Screen
+  --
+  + Machine()
+  + loadProgram(program: int[]): void
+  + loadProgram(program: int[], startAddress: int): void
+  + run(): void
+  + step(): void
+  + reset(): void
+  + getScreen(): Screen
+  + getRegisters(): RegisterFile
+  + getMemory(): Memory
+}
+
+class Programs <<utility>> {
+  + {static} SUM_1_TO_5: int[] = {0x2001, 0x2102, 0x2203, 0x2304, 0x2405, 0x5501, 0x5552, 0x5553, 0x5554, 0x3500, 0xC000}
+  + {static} MULTIPLY_6_X_3: int[] = {0x2006, 0x5100, 0x5210, 0x3200, 0xC000}
+}
+
+class Main {
+  + {static} main(args: String[]): void
+}
+
+' ---- Relationships ----
+Machine *-- CPU : owns
+Machine *-- ALU : owns
+Machine *-- InstructionDecoder : owns
+Machine *-- RegisterFile : owns
+Machine *-- Memory : owns
+Machine *-- Screen : owns
+
+RegisterFile *-- "16" Register : contains
+
+CPU o-- RegisterFile : uses
+CPU o-- Memory : uses
+CPU o-- ALU : uses
+CPU o-- InstructionDecoder : uses
+CPU ..> Instruction : fetches / executes
+
+Memory --> Screen : address 00 writes\nto screen
+
+InstructionDecoder ..> Instruction : creates
+Instruction --> Opcode : has
+InstructionDecoder ..> Opcode : maps nibble
+
+Main ..> Machine : creates
+Main ..> Programs : loads
+Machine ..> Programs : runs
+
+note right of Memory
+  256 cells x 8 bits.
+  write(0x00, v) is redirected
+  to Screen.write(v) (memory-mapped output).
+end note
+
+note bottom of CPU
+  Fetch: read 2 bytes at PC and PC+1, then PC += 2.
+  Decode via InstructionDecoder.
+  Execute via opcode 1-C handlers.
+  Opcode C (HALT) sets halted = true.
+end note
+
+note bottom of Programs
+  Program 1: R5 = 1+2+3+4+5 -> screen shows 0x0F
+  Program 2: 6 + 6 = 0x0C, 0x0C + 6 = 0x12 -> screen shows 0x12
+end note
+
+@enduml

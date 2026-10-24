@@ -1,0 +1,98 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+class Machine {
+ * cpu: CPU
+ * memory: Memory
+ * screen: Screen
+ * Machine()
+ * loadProgram(program: String[]) : void
+ * run() : void
+ * step() : void
+ * reset() : void
+   }
+class CPU {
+ * registers: Registers
+ * alu: ALU
+ * pc: byte
+ * ir: short
+ * halted: boolean
+ * memoryRef: Memory
+ * CPU(mem: Memory)
+ * fetch() : void
+ * decode() : Instruction
+ * execute(instr: Instruction) : void
+ * isHalted() : boolean
+   }
+class Memory {
+ * cells: byte[256]
+ * screenRef: Screen
+ * Memory(screen: Screen)
+ * read(address: byte) : byte
+ * write(address: byte, data: byte) : void
+ * load(startIndex: byte, data: byte[]) : void
+   }
+class Registers {
+ * regs: byte[16]
+ * get(index: byte) : byte
+ * set(index: byte, data: byte) : void
+ * clear() : void
+   }
+class ALU {
+ * add(a: byte, b: byte) : byte
+ * addFloat(a: byte, b: byte) : byte
+ * or(a: byte, b: byte) : byte
+ * and(a: byte, b: byte) : byte
+ * xor(a: byte, b: byte) : byte
+ * rotateRight(value: byte, steps: int) : byte
+   }
+class Screen {
+ * outputHistory: List<String>
+ * display(value: byte) : void
+ * clear() : void
+ * getOutput() : String
+   }
+class Instruction {
+ * opcode: byte
+ * operand1: byte
+ * operand2: byte
+ * operand3: byte
+ * Instruction(instructionReg: short)
+ * getOpcode() : byte
+ * getOperand1() : byte
+ * getOperand2() : byte
+ * getOperand3() : byte
+   }
+note right of Memory
+write(address, data):
+if (address == 0x00) {
+screenRef.display(data)
+} else {
+cells[address] = data
+}
+end note
+note right of CPU
+Opcodes 1-C (Brookshear ISA):
+1: Load Reg from Mem
+2: Load Reg with Val
+3: Store Reg to Mem (00=Screen)
+4: Move Reg to Reg
+5: Add (Two's Complement)
+6: Add (Floating Point)
+7: OR
+8: AND
+9: XOR
+A: Rotate Right
+B: Jump if R0 == R(op1)
+C: Halt
+end note
+Machine *-- CPU : contains >
+Machine *-- Memory : contains >
+Machine *-- Screen : contains >
+CPU *-- Registers : contains >
+CPU *-- ALU : contains >
+CPU --> Memory : uses >
+CPU ..> Instruction : decodes into >
+Memory --> Screen : memory-mapped I/O (addr 00) >
+@enduml
