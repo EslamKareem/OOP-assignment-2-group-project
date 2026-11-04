@@ -12,7 +12,7 @@ private:
         CPU cpu;
         Alu alu;
         InstructionDecoder decoder;
-        RegisterFile register;
+        RegisterFile registers;
         Memory memory;
         Screen screen;
 public:
