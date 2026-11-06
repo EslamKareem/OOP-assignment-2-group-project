@@ -1,3 +1,5 @@
+#pragma once
+#include <optional>
 #include "ALU.h"
 #include "InstructionDecoder.h"
 #include "RegisterFile.h"
@@ -8,7 +10,7 @@ using namespace std;
 class CPU{
 private:
         int programCounter;
-        instruction InstructionRegister;
+        optional<Instruction>instruction InstructionRegister;
         bool halted;
 
         RegisterFile& registers;
