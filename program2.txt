@@ -1,0 +1,9 @@
+; Program 2
+; Purpose: Multiply 6 x 3 using addition
+; and display the result (18 = 12 hex) on the screen.
+
+2006   ; R0 = 6
+5100   ; R1 = R0 + R0 = 12
+5210   ; R2 = R1 + R0 = 18
+3200   ; Screen = R2
+C000   ; Halt 

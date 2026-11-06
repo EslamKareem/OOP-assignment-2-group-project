@@ -1,0 +1,15 @@
+; Program 1
+; Purpose: Sum the numbers 1+2+3+4+5
+; and display the result (15 = 0F) on the screen.
+
+2001   ; R0 = 1
+2102   ; R1 = 2
+2203   ; R2 = 3
+2304   ; R3 = 4
+2405   ; R4 = 5
+5501   ; R5 = R0 + R1
+5552   ; R5 = R5 + R2
+5553   ; R5 = R5 + R3
+5554   ; R5 = R5 + R4
+3500   ; Screen = R5
+C000   ; Halt
