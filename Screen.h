@@ -1,5 +1,4 @@
-#ifndef SCREEN_H
-#define SCREEN_H
+#pragma once
 
 #include <iomanip>
 #include <iostream>
@@ -14,4 +13,3 @@ public:
   void display() const;
   int getLastValue() const;
 };
-#endif

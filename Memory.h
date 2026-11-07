@@ -1,5 +1,4 @@
-#ifndef MEMORY_H
-#define MEMORY_H
+#pragma once
 #include "Screen.h"
 #include <vector>
 class Memory {
@@ -18,5 +17,3 @@ public:
   void reset();
   int size() const;
 };
-
-#endif
