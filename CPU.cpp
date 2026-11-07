@@ -25,7 +25,9 @@ void CPU::halt(){
 
 bool CPU::isHalted() const{ return halted;}
 int CPU::getProgramCounter() const{ return programCounter;}
-void CPU::setProgramCounter(int address){}
+void CPU::setProgramCounter(int address){
+    programCounter = address & 0xff;
+}
 
 RegisterFile& CPU::getRegisters(){ return registers;}
 const RegisterFile& CPU::getRegisters() const { return registers;}
