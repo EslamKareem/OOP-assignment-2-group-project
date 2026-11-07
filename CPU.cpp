@@ -33,3 +33,17 @@ Memory& CPU::getMemory(){ return memory;}
 const Memory& CPU::getMemory() const {return memory;}
 ALU& CPU::getALU(){return alu;}
 const ALU& CPU::getALU() const { return alu;}
+
+// TODO(Teammates): Implement fetch() — read 2 bytes from memory at programCounter,
+// combine into 16-bit instruction, increment PC, return Instruction.
+Instruction CPU::fetch(){
+    return Instruction(Opcode::HALT, 0, 0, 0, 0, 0xC000, true);
+}
+
+// TODO(Teammates): Implement execute() — decode opcode and call appropriate exec* method.
+void CPU::execute(const Instruction& i){
+    (void)i;  // placeholder
+    if (i.getOpcode() == Opcode::HALT) {
+        halt();
+    }
+}

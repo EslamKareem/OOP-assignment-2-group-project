@@ -1,0 +1,19 @@
+CS213 - Object-Oriented Programming: Assignment 2
+Team: Vole Machine Simulator
+
+Section: [Replace with your section number]
+
+Team Members:
+1. Islam Karim      - ID: 20250814
+2. Omar Yasser      - ID: 20250854
+3. Mohammed Gherbawi - ID: 20253019
+4. Kareem Adel      - ID: 20253029
+
+Responsibilities (Eslam Karim - 20250814):
+- Memory (256-cell RAM) with memory-mapped I/O to Screen at address 0x00
+- Screen output device (hexadecimal display)
+- Programs utility class (hardcoded test programs)
+- Main application entry point
+
+Instructor: Dr. Mohammad El-Ramly
+Faculty of Computing and Artificial Intelligence (FCAI), Cairo University
