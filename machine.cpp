@@ -1,12 +1,12 @@
 #include "machine.h"
 
-Machine :: Machine(): screen(), memory(screen),registers(), alu(), decoder(), cpu(register, memory, alu, decoder){}
+Machine::Machine(): screen(), memory(screen), registers(), alu(), decoder(), cpu(registers, memory, alu, decoder) {}
 
-void Machine::loadProgram(const int &program){
+void Machine::loadProgram(const std::vector<int>& program){
     loadProgram(program, 0);
 } 
 
-void Macgihine::loadProgram(const int &program, int startAddress){
+void Machine::loadProgram(const std::vector<int>& program, int startAddress){
     memory.load(program, startAddress);
 }
 
@@ -15,7 +15,7 @@ void Machine::step(){
 }
 
 void Machine::run(){
-    cpu,run();
+    cpu.run();
 }
 
 void Machine::reset(){

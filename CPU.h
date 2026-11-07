@@ -10,7 +10,7 @@ using namespace std;
 class CPU{
 private:
         int programCounter;
-        optional<Instruction>instruction InstructionRegister;
+        optional<Instruction> InstructionRegister;
         bool halted;
 
         RegisterFile& registers;

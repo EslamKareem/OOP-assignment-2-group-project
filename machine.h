@@ -11,7 +11,7 @@ using namespace std;
 class Machine{
 private:
         CPU cpu;
-        Alu alu;
+        ALU alu;
         InstructionDecoder decoder;
         RegisterFile registers;
         Memory memory;
