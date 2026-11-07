@@ -2,27 +2,10 @@
 
 CPU::CPU(RegisterFile& registers, Memory& memory, ALU& alu, InstructionDecoder& decoder): registers(registers), memory(memory), alu(alu), decoder(decoder), programCounter(0), InstructionRegister(), halted(false) {}
 
-void CPU::step(){
-    if (halted) return;
-    Instruction ins = fetch();
-    InstructionRegister = ins;
-    execute(ins);
-}
-void CPU::run(){
-    while (!halted){
-        step();
-    }
-}
-void CPU::reset(){
-    programCounter = 0;
-    InstructionRegister.reset();
-    halted = false ;
-    registers.reset();
-}
-void CPU::halt(){
-    halted = true ;
-}
-
+void CPU::step(){}
+void CPU::run(){}
+void CPU::reset(){}
+void CPU::halt(){}
 bool CPU::isHalted() const{ return halted;}
 int CPU::getProgramCounter() const{ return programCounter;}
 void CPU::setProgramCounter(int address){}
