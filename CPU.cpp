@@ -31,5 +31,5 @@ RegisterFile& CPU::getRegisters(){ return registers;}
 const RegisterFile& CPU::getRegisters() const { return registers;}
 Memory& CPU::getMemory(){ return memory;}
 const Memory& CPU::getMemory() const {return memory;}
-ALU& CPU::getALU(){return alu}
+ALU& CPU::getALU(){return alu;}
 const ALU& CPU::getALU() const { return alu;}
