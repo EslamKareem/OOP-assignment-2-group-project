@@ -1,5 +1,4 @@
-#ifndef PROGRAMS_H
-#define PROGRAMS_H
+#pragma once
 #include <vector>
 
 class Programs {
@@ -47,5 +46,3 @@ public:
   // Return all 10 programs as a vector of vectors.
   static std::vector<std::vector<int>> allPrograms();
 };
-
-#endif // PROGRAMS_H
