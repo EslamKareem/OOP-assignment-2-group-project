@@ -2,7 +2,7 @@
 
 Machine::Machine(): screen(), memory(screen), registers(), alu(), decoder(), cpu(registers, memory, alu, decoder) {}
 
-void Machine::loadProgram(const std::vector<int>& program){
+void Machine::loadProgram(const vector<int>& program){
     loadProgram(program, 0);
 } 
 
@@ -23,8 +23,8 @@ void Machine::reset(){
     memory.reset();
 }
 
-Screen& Machine::getscreen(){ return screen;}
-const Screen& Machine::getscreen() const { return screen;}
+Screen& Machine::getScreen(){ return screen;}
+const Screen& Machine::getScreen() const { return screen;}
 RegisterFile& Machine::getRegisters(){ return registers;}
 const RegisterFile& Machine::getRegisters() const { return registers;}
 Memory& Machine::getMemory(){ return memory;}

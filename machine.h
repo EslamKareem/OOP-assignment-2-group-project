@@ -30,8 +30,8 @@ public:
         void step();
         void reset();
 
-        Screen& getscreen();
-        const Screen& getscreen() const ;
+        Screen& getScreen();
+        const Screen& getScreen() const ;
         RegisterFile& getRegisters();
         const RegisterFile& getRegisters() const;
         Memory& getMemory();
