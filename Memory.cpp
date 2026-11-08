@@ -45,7 +45,7 @@ string Memory::dump() const{
       if (i% 8 == 0){
          oss << setw(2) << setfill('0') << hex << uppercase << i << ":"; 
       }
-      oss << stew(2) << setfill('0') << hex << uppercase << cells[i] << " ";
+      oss << setw(2) << setfill('0') << hex << uppercase << cells[i] << " ";
       if (i % 8 == 7){
         oss << "\n";
       }
