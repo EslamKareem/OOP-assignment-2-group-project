@@ -1,7 +1,14 @@
 #include "Memory.h"
-#include <algorithm>
+#include <iomanip>
+#include <ios>
+#include <sstream>
 
-Memory::Memory(Screen &screenRef) : screen(screenRef), cells(SIZE, 0) {}
+Memory::Memory(Screen &screenRef) : screen(screenRef), cells{} {}
+
+bool Memory::isScreenAddress(int address) const{
+   int addr = address & 0xff;
+   return addr == 0x00 || addr == 0xFF;
+}
 
 void Memory::load(const std::vector<int> &program, int startAddress) {
   for (size_t i = 0; i < program.size(); ++i) {
@@ -14,27 +21,34 @@ void Memory::load(const std::vector<int> &program, int startAddress) {
   }
 }
 
-void Memory::store(int address, int value) {
-  if (address == 0x00) {
-    // Memory-mapped I/O: writing to address 0x00 updates the screen.
-    screen.write(value);
-  } else if (address >= 0 && address < SIZE) {
-    cells[address] = value & 0xFF;
-  }
+void Memory::write(int address, int value) {
+   int addr = address & 0xFF;
+   if (isScreenAddress(addr)){
+       screen.write(value & 0xFF);
+       return;
+   }
+   cells[addr] = value & 0xFF;
 }
 
 int Memory::read(int address) const {
-  if (address == 0x00) {
-    // Memory-mapped I/O: reading address 0x00 returns the screen's last value.
-    return screen.getLastValue();
-  } else if (address > 0 && address < SIZE) {
-    return cells[address];
-  }
-  return 0;
+    return cells[address & 0xFF];
 }
 
-int Memory::get(int address) const { return read(address); }
 
-void Memory::reset() { std::fill(cells.begin(), cells.end(), 0); }
+void Memory::reset() { 
+   cells.fill(0);
+ }
 
-int Memory::size() const { return SIZE; }
+string Memory::dump() const{
+  ostringstream oss ;
+    for(int i = 0; i < SIZE; i++){
+      if (i% 8 == 0){
+         oss << setw(2) << setfill('0') << hex << uppercase << i << ":"; 
+      }
+      oss << stew(2) << setfill('0') << hex << uppercase << cells[i] << " ";
+      if (i % 8 == 7){
+        oss << "\n";
+      }
+    }
+    return oss.str();
+}
