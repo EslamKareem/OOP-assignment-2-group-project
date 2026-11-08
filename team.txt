@@ -1,36 +1,26 @@
-CS213 - Object-Oriented Programming: Assignment 2
-Team: Vole Machine Simulator
-
-Section: [Replace with your section number]
-
-Team Members:
-1. Islam Karim      - ID: 20250814
-2. Omar Yasser      - ID: 20250854
-3. Mohammed Gherbawi - ID: 20253019
-4. Kareem Adel      - ID: 20253029
-
-Responsibilities:
-
-Eslam Karim (Islam Karim) - 20250814: Memory & I/O Subsystem
-- Memory (256-cell RAM) with memory-mapped I/O to Screen at address 0x00
-- Screen output device (hexadecimal display)
-- Programs utility class (hardcoded test programs)
-- Main application entry point
-
-Omar Yasser - 20250854: Core Architecture & Execution
-- Machine class (central orchestrator that ties all components together and handles loading the program)
-- CPU class (program counter, fetch-decode-execute cycle)
-- Execution methods: execLoadMem, execAddInt, execJumpEq, etc.
-
-Mohammed Gherbawi - 20253019: Instruction Parsing
-- InstructionDecoder (splits raw 16-bit instructions into high byte and low byte)
-- Instruction value object (parsed opcode and operands r, s, t, xy)
-- Opcode enum (LOAD, STORE, ADD_FLOAT, JUMP, etc.)
-
-Kareem Adel - 20253029: Arithmetic Logic & Register State
-- ALU (Arithmetic Logic Unit)
-- RegisterFile
-- Register
-
 Instructor: Dr. Mohammad El-Ramly
 Faculty of Computing and Artificial Intelligence (FCAI), Cairo University
+CS213 - Object-Oriented Programming: Assignment 2
+Topic: Vole Machine Simulator
+Section: [S33,S34]
+
+ID1:           20250814
+NAME1:         Islam Karim (Eslam Karim)
+FILES1:        Memory.h, Memory.cpp, Screen.h, Screen.cpp, Programs.h, Programs.cpp, main.cpp
+
+ID2:           20250854
+NAME2:         Omar Yasser
+FILES2:        CPU.h, CPU.cpp, Machine.h, Machine.cpp, main.cpp
+
+ID3:           20253019
+NAME3:         Mohammed Gherbawi
+FILES3:        InstructionDecoder.h, InstructionDecoder.cpp, Instruction.h, Instruction.cpp, Opcode.h
+
+ID4:           20253029
+NAME4:         Kareem Adel
+FILES4:        ALU.h, ALU.cpp, RegisterFile.h, RegisterFile.cpp, Register.h, Register.cpp
+
+Report file    https://docs.google.com/document/d/17_iEt9kfqANfBt8_FbHbiGIh-BKjIQQOcFXuG7mZCrw/edit?usp=sharing
+GITHUB:        https://github.com/EslamKareem/OOP-assignment-2-group-project.git
+VIDEO_DESIGN:  https://youtu.be/OWc1eD2wbVk?si=WupNscMhKRegRlvQ
+VIDEO_GUI:     https://youtu.be/RC5fmO6IG8E?si=bj8eHNIc3Ohjw998
