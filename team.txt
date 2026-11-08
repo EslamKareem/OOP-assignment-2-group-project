@@ -9,11 +9,28 @@ Team Members:
 3. Mohammed Gherbawi - ID: 20253019
 4. Kareem Adel      - ID: 20253029
 
-Responsibilities (Eslam Karim - 20250814):
+Responsibilities:
+
+Eslam Karim (Islam Karim) - 20250814: Memory & I/O Subsystem
 - Memory (256-cell RAM) with memory-mapped I/O to Screen at address 0x00
 - Screen output device (hexadecimal display)
 - Programs utility class (hardcoded test programs)
 - Main application entry point
+
+Omar Yasser - 20250854: Core Architecture & Execution
+- Machine class (central orchestrator that ties all components together and handles loading the program)
+- CPU class (program counter, fetch-decode-execute cycle)
+- Execution methods: execLoadMem, execAddInt, execJumpEq, etc.
+
+Mohammed Gherbawi - 20253019: Instruction Parsing
+- InstructionDecoder (splits raw 16-bit instructions into high byte and low byte)
+- Instruction value object (parsed opcode and operands r, s, t, xy)
+- Opcode enum (LOAD, STORE, ADD_FLOAT, JUMP, etc.)
+
+Kareem Adel - 20253029: Arithmetic Logic & Register State
+- ALU (Arithmetic Logic Unit)
+- RegisterFile
+- Register
 
 Instructor: Dr. Mohammad El-Ramly
 Faculty of Computing and Artificial Intelligence (FCAI), Cairo University
