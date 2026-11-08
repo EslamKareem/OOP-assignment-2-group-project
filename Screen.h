@@ -2,14 +2,18 @@
 
 #include <iomanip>
 #include <iostream>
+#include <vector>
+using namespace std;
 class Screen {
 private:
-  int lastValue;
+  vector<int> output;
 
 public:
   Screen();
   ~Screen() = default;
+
   void write(int value);
-  void display() const;
+  vector<int> getOutput() const;
   int getLastValue() const;
+  void clear();
 };
