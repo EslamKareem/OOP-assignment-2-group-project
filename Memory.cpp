@@ -7,7 +7,7 @@ Memory::Memory(Screen &screenRef) : screen(screenRef), cells{} {}
 
 bool Memory::isScreenAddress(int address) const{
    int addr = address & 0xff;
-   return addr == 0x00 || addr == 0xFF;
+   return addr == 0x00;
 }
 
 void Memory::load(const std::vector<int> &program, int startAddress) {

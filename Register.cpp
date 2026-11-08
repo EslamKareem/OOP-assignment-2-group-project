@@ -6,12 +6,12 @@ Register::Register()
     value = 0;
 }
 
- void Register::Setvalue(int v)
-{
-    value = v;    
-}
-
-int Register::Getvalue()
+int Register::read() const
 {
     return value;
+}
+
+void Register::write(int v)
+{
+    value = v;
 }

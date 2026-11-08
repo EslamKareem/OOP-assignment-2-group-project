@@ -12,6 +12,6 @@ enum class Opcode : uint8_t {
     AND_OP = 0x8,
     XOR_OP = 0x9,
     ROTATE = 0xA,
-    JUMP = 0xB,
+    JUMP_EQ = 0xB,
     HALT = 0xC,
 };

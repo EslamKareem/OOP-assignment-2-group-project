@@ -36,4 +36,7 @@ public:
         const RegisterFile& getRegisters() const;
         Memory& getMemory();
         const Memory& getMemory() const;
+
+        CPU& getCPU();
+        const CPU& getCPU() const;
 };

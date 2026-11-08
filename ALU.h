@@ -4,10 +4,15 @@ class ALU
 public:
 	ALU();
 
-	int addTowscomplement(int a, int b);
-	int bitwiseAnd(int a, int b);
-	int bitwiseOr(int a, int b);
-    int rotateRight(int value, int shiftCount);
-	int addFloatingPoint(int a, int b);
+	int addTwosComplement(int a, int b);
+	int addFloat(int a, int b);
+	int bitOr(int a, int b);
+	int bitAnd(int a, int b);
+	int bitXor(int a, int b);
+	int rotateRight(int value, int steps);
+
+private:
+	double toFloat(int bits);
+	int fromFloat(double value);
 
 };

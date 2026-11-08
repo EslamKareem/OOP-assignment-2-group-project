@@ -29,3 +29,6 @@ RegisterFile& Machine::getRegisters(){ return registers;}
 const RegisterFile& Machine::getRegisters() const { return registers;}
 Memory& Machine::getMemory(){ return memory;}
 const Memory& Machine::getMemory() const {return memory;}
+
+CPU& Machine::getCPU(){ return cpu;}
+const CPU& Machine::getCPU() const { return cpu;}

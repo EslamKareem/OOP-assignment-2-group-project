@@ -42,14 +42,16 @@ void ViewMenu(){
 
 int getChoice() {
   int choice;
-  cin >> choice;
-  if (cin.fail()) {
+  while (true) {
+    cin >> choice;
+    if (!cin.fail()) {
+      cin.ignore(10000, '\n');
+      return choice;
+    }
     cin.clear();
     cin.ignore(10000, '\n');
     cout << "Invalid input. Please enter a number between 1 and 18." << endl;
-    cin >> choice;
   }
-  return choice;
 }
 
 int main() {

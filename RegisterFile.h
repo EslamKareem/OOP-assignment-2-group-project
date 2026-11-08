@@ -4,6 +4,7 @@
 #include <array>
 #include <cstdint>
 #include <iostream>
+#include "Register.h"
 using namespace std;
 
 // RegisterFile holds 16 x 8-bit registers (R0..R15) for the Vole machine.
@@ -14,13 +15,13 @@ public:
 
     RegisterFile();
 
-    uint8_t read(int index) const;
-    void write(int index, uint8_t value);
+    int read(int index) const;
+    void write(int index, int value);
     void reset();
     string dump()const;
 
 private:
-    int registers[NUM_REGISTERS];
+    Register registers[NUM_REGISTERS];
 };
 
 #endif // REGISTER_FILE_H

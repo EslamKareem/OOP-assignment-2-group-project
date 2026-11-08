@@ -17,3 +17,10 @@ Instruction InstructionDecoder::decode(uint8_t high, uint8_t low)
 
     return Instruction(static_cast<Opcode>(op), r, s, t, xy, raw, valid);
 }
+
+Instruction InstructionDecoder::decodeWord(uint16_t word)
+{
+    uint8_t high = static_cast<uint8_t>((word >> 8) & 0xFF);
+    uint8_t low  = static_cast<uint8_t>(word & 0xFF);
+    return decode(high, low);
+}

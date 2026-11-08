@@ -1,5 +1,7 @@
 #include "Screen.h"
 
+Screen::Screen() {}
+
 void Screen::write(int value) {
   output.push_back(value & 0xFF);
 }

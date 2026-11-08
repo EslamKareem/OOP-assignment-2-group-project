@@ -1,0 +1,3 @@
+/home/eslam/Documents/Work space/OOP-assignment-2-group-project/build/CMakeFiles/vole_gui.dir
+/home/eslam/Documents/Work space/OOP-assignment-2-group-project/build/CMakeFiles/edit_cache.dir
+/home/eslam/Documents/Work space/OOP-assignment-2-group-project/build/CMakeFiles/rebuild_cache.dir

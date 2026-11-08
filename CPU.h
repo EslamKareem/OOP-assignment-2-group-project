@@ -47,6 +47,9 @@ public:
         int getProgramCounter() const;
         void setProgramCounter(int address);
 
+        // Instruction Register access (needed to observe the last executed instruction)
+        const std::optional<Instruction>& getInstructionRegister() const;
+
         RegisterFile& getRegisters();
         const RegisterFile& getRegisters() const;
         Memory& getMemory();

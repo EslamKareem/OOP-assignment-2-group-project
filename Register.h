@@ -6,9 +6,8 @@ private:
 public:
 	Register();
 
-	void Setvalue(int v);
-	int Getvalue();
-
+	int read() const;
+	void write(int v);
 
 };
 
