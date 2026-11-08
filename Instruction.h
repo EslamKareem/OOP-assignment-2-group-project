@@ -24,6 +24,10 @@ public:
     uint8_t getT() const;
     uint8_t getXY() const;
     uint16_t getRaw() const;
+    uint16_t  getAddress() const;
+    uint16_t getConstant() const;
+    uint16_t getMoveDest() const;
+    uint16_t getRotateCount() const;
     bool isValid() const;
     
   

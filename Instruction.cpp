@@ -35,6 +35,26 @@ uint16_t Instruction::getRaw() const
     return raw;
 }
 
+uint16_t Instruction::getAddress() const
+{
+    return xy;
+}
+
+uint16_t Instruction::getConstant() const
+{
+    return xy;
+}
+
+uint16_t Instruction::getMoveDest() const
+{
+    return t;
+}
+
+uint16_t Instruction::getRotateCount() const
+{
+    return t;
+}
+
 bool Instruction::isValid() const
 {
     return valid;
