@@ -49,3 +49,9 @@ void CPU::execute(const Instruction& i){
         halt();
     }
 }
+
+void CPU::execJumpEq(const Instruction &i){
+    if(registers.read(i.getR()) == registers.read(0)){
+        programCounter = i.getAddress() & 0xff;
+    }
+}
