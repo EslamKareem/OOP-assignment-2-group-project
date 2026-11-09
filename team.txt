@@ -5,7 +5,7 @@ Topic: Vole Machine Simulator
 Section: [S33,S34]
 
 ID1:           20250814
-NAME1:         Islam Karim (Eslam Karim)
+NAME1:         Islam Karim 
 FILES1:        Memory.h, Memory.cpp, Screen.h, Screen.cpp, Programs.h, Programs.cpp, main.cpp 
 
 ID2:           20250854
