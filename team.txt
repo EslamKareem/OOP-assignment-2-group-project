@@ -6,7 +6,7 @@ Section: [S33,S34]
 
 ID1:           20250814
 NAME1:         Islam Karim (Eslam Karim)
-FILES1:        Memory.h, Memory.cpp, Screen.h, Screen.cpp, Programs.h, Programs.cpp, main.cpp
+FILES1:        Memory.h, Memory.cpp, Screen.h, Screen.cpp, Programs.h, Programs.cpp, main.cpp (GUI with the help of AI)
 
 ID2:           20250854
 NAME2:         Omar Yasser
