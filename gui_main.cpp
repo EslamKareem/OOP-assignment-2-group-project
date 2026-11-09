@@ -380,11 +380,35 @@ int main(int /*argc*/, char** /*argv*/) {
 
             ImGui::TextColored(Nord::snow1, "Load Program");
             ImGui::Spacing();
-            if (ImGui::Button("Load Sample Program 1", ImVec2(-1, 32)))
+            if (ImGui::Button("Load Program 1: Sum 1 to 5", ImVec2(-1, 32)))
                 loadProgram(Programs::program1());
             ImGui::Dummy(ImVec2(0, 6));
-            if (ImGui::Button("Load Sample Program 2", ImVec2(-1, 32)))
+            if (ImGui::Button("Load Program 2: Multiply 6 x 3", ImVec2(-1, 32)))
                 loadProgram(Programs::program2());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 3: Load 0x0A", ImVec2(-1, 32)))
+                loadProgram(Programs::program3());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 4: Add 3+5", ImVec2(-1, 32)))
+                loadProgram(Programs::program4());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 5: OR 1 | 2", ImVec2(-1, 32)))
+                loadProgram(Programs::program5());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 6: AND 3 & 1", ImVec2(-1, 32)))
+                loadProgram(Programs::program6());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 7: XOR 6 ^ 3", ImVec2(-1, 32)))
+                loadProgram(Programs::program7());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 8: Load 0x0F", ImVec2(-1, 32)))
+                loadProgram(Programs::program8());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 9: Add 1+2", ImVec2(-1, 32)))
+                loadProgram(Programs::program9());
+            ImGui::Dummy(ImVec2(0, 6));
+            if (ImGui::Button("Load Program 10: Add 5+10", ImVec2(-1, 32)))
+                loadProgram(Programs::program10());
             ImGui::Spacing();
 
             ImGui::TextColored(Nord::snow1, "Screen");

@@ -41,6 +41,7 @@ CMakeFiles/vole_gui.dir/CPU.cpp.o: \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Instruction.h \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Opcode.h \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/RegisterFile.h \
+ /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Register.h \
  /usr/include/c++/16/array /usr/include/c++/16/compare \
  /usr/include/c++/16/bits/stdexcept_throw.h \
  /usr/include/c++/16/bits/stdexcept_throwfwd.h \
@@ -153,7 +154,6 @@ CMakeFiles/vole_gui.dir/CPU.cpp.o: \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
  /usr/include/c++/16/bits/istream.tcc \
- /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Register.h \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Memory.h \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Screen.h \
  /usr/include/c++/16/iomanip /usr/include/c++/16/locale \

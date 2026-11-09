@@ -2,6 +2,7 @@ CMakeFiles/vole_gui.dir/RegisterFile.cpp.o: \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/RegisterFile.cpp \
  /usr/include/stdc-predef.h \
  /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/RegisterFile.h \
+ /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Register.h \
  /usr/include/c++/16/array /usr/include/c++/16/compare \
  /usr/include/c++/16/bits/version.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -144,10 +145,9 @@ CMakeFiles/vole_gui.dir/RegisterFile.cpp.o: \
  /usr/include/c++/16/bits/basic_ios.tcc \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
- /usr/include/c++/16/bits/istream.tcc \
- /home/eslam/Documents/Work\ space/OOP-assignment-2-group-project/Register.h \
- /usr/include/c++/16/sstream /usr/include/c++/16/bits/sstream.tcc \
- /usr/include/c++/16/iomanip /usr/include/c++/16/locale \
+ /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/sstream \
+ /usr/include/c++/16/bits/sstream.tcc /usr/include/c++/16/iomanip \
+ /usr/include/c++/16/locale \
  /usr/include/c++/16/bits/locale_facets_nonio.h /usr/include/c++/16/ctime \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/time_members.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/messages_members.h \
