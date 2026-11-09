@@ -22,5 +22,5 @@ FILES4:        ALU.h, ALU.cpp, RegisterFile.h, RegisterFile.cpp, Register.h, Reg
 
 Report file    https://docs.google.com/document/d/17_iEt9kfqANfBt8_FbHbiGIh-BKjIQQOcFXuG7mZCrw/edit?usp=sharing
 GITHUB:        https://github.com/EslamKareem/OOP-assignment-2-group-project.git
-VIDEO_DESIGN:  https://youtu.be/OWc1eD2wbVk?si=WupNscMhKRegRlvQ
-VIDEO_GUI:     https://youtu.be/ZrF_IhINqSE
+VIDEO_DESIGN:  https://youtu.be/OWc1eD2wbVk?si=WupNscMhKRegRlvQ (Islam)
+VIDEO_GUI:     https://youtu.be/ZrF_IhINqSE (kareem)
