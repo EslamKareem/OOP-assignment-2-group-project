@@ -20,10 +20,14 @@
 hello everyone
 this is Eslam and am writing this for you to know what we are doing in this project
 we are doing an assignment for the Object-Oriented Programming course (OOP),
-pleas note that this is not a professional work this is an assignment we enjoy to do
+please note that this is not a professional work this is an assignment we enjoy to do
 you can use whatever we did just a mention will be enough as long as you are a normal user not a company
 ⚠️ if a company please note that:
-you can ask us and mention us if you don`t want to mention us you can contact us via email to see our response
+you can ask us and mention us if you don't want to mention us you can contact us via email to see our response
 thanks for reading this and have a great day. 🕊️
 
-the lion doesn`t concern himself with skill issue
+the lion doesn't concern himself with skill issue
+
+## Class Diagram
+
+[![Class diagram](docs/diagram.svg)](docs/diagram.svg)
