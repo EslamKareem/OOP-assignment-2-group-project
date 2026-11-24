@@ -5,9 +5,9 @@
 
 Memory::Memory(Screen &screenRef) : screen(screenRef), cells{} {}
 
-bool Memory::isScreenAddress(int address) const{
-   int addr = address & 0xff;
-   return addr == 0x00;
+bool Memory::isScreenAddress(int address) const {
+  int addr = address & 0xff;
+  return addr == 0x00;
 }
 
 void Memory::load(const std::vector<int> &program, int startAddress) {
@@ -22,33 +22,28 @@ void Memory::load(const std::vector<int> &program, int startAddress) {
 }
 
 void Memory::write(int address, int value) {
-   int addr = address & 0xFF;
-   if (isScreenAddress(addr)){
-       screen.write(value & 0xFF);
-       return;
-   }
-   cells[addr] = value & 0xFF;
+  int addr = address & 0xFF;
+  if (isScreenAddress(addr)) {
+    screen.write(value & 0xFF);
+    return;
+  }
+  cells[addr] = value & 0xFF;
 }
 
-int Memory::read(int address) const {
-    return cells[address & 0xFF];
-}
+int Memory::read(int address) const { return cells[address & 0xFF]; }
 
+void Memory::reset() { cells.fill(0); }
 
-void Memory::reset() { 
-   cells.fill(0);
- }
-
-string Memory::dump() const{
-  ostringstream oss ;
-    for(int i = 0; i < SIZE; i++){
-      if (i% 8 == 0){
-         oss << setw(2) << setfill('0') << hex << uppercase << i << ":"; 
-      }
-      oss << setw(2) << setfill('0') << hex << uppercase << cells[i] << " ";
-      if (i % 8 == 7){
-        oss << "\n";
-      }
+string Memory::dump() const {
+  ostringstream oss;
+  for (int i = 0; i < SIZE; i++) {
+    if (i % 8 == 0) {
+      oss << setw(2) << setfill('0') << hex << uppercase << i << ":";
     }
-    return oss.str();
+    oss << setw(2) << setfill('0') << hex << uppercase << cells[i] << " ";
+    if (i % 8 == 7) {
+      oss << "\n";
+    }
+  }
+  return oss.str();
 }
